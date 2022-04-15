@@ -1,5 +1,7 @@
 package BinarySearchTree;
 
+import org.junit.Test;
+
 public class MyBinaryNode<K extends Comparable<K>> {
 	K key;
 	MyBinaryNode<K> left;
@@ -9,12 +11,7 @@ public class MyBinaryNode<K extends Comparable<K>> {
 		this.key = key;
 		this.left = null;
 		this.rigth = null;
-		
-	}
-
-}
-
-public class MyBinaryTreeTest {
+		public class MyBinaryTreeTest {
 	@Test
 	public void given3NumberWhenAddedToBSTShouldReturnSize3() {
 		MyBinaryTree<Integer> myBinaryTree = new MyBinaryTree<>();
@@ -22,6 +19,7 @@ public class MyBinaryTreeTest {
 		myBinaryTree.add(30);
 		myBinaryTree.add(70);
 		int size = myBinaryTree.getSize();
+		
 		Assert.assertEquals( expected: 3, size);
 	}
 	
@@ -32,6 +30,10 @@ public class MyBinaryTree<K extends Comparable<K>> {
 	
 	public void add(K key) {
 		this.root = this.addRecursively(root, key);
+	}
+	public int getSize() {
+		// TODO Auto-generated method stub
+		return 0;
 	}
 	private MyBinaryNode<K> addRecursively(MyBinaryNode<K> current, K key){
 		if (current == null)
@@ -45,6 +47,14 @@ public class MyBinaryTree<K extends Comparable<K>> {
 			}
 				return current;
 			}
-		}
+	public int getSize() {
+		return this.gitSizeRecursive(root);
 	}
-}
+	private int getSizeRecursive(MyBinaryNode<K> current) {
+		return current == null ? 0 : 1 + this.getSizeRecursive(current.left + this.getSizeRecursive(current.rigth));
+		
+		
+	
+	}
+	}
+}}
